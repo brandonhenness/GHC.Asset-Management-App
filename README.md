@@ -48,28 +48,28 @@ To run the Asset Management App, you will need:
 
      ```python
      # config.py
-     # Contains configuration settings for the AMS program.
+     # Configuration settings for the Asset Management System.
 
-     # General settings
-     APP_NAME = "Asset Management System"
-     VERSION = "1.5.1"
+     # General Settings
+     APP_NAME = "Asset Management System"  # Application name
+     VERSION = "1.5.1"                     # Application version
 
-     # Debug settings
-     LIVE_DATABASE = True  # True --> use live database; False --> use test database (+ verbose errors)
-     VERBOSE_ERROR = True  # True --> prints verbose errors in MAGENTA; False --> skips live errors
-     VERBOSE_NO_CLEAR_SCREEN = False  # True --> stops clear_screen() from clearing program output (creates visual problems)
+     # Debug Settings
+     LIVE_DATABASE = True                  # Use live database (True) or test database (False)
+     VERBOSE_ERROR = True                  # Print verbose errors (True) or skip them (False)
+     VERBOSE_NO_CLEAR_SCREEN = False       # Prevent screen clearing during debug (True)
 
-     # Database settings
-     HOST = "localhost"
-     DATABASE = "db"
-     USER = "postgres"
-     PASSWORD = "password"
+     # Database Settings
+     HOST = "localhost"                   # Host for the live database
+     DATABASE = "db"                      # Name of the live database
+     USER = "postgres"                    # Username for the live database
+     PASSWORD = "password"                # Password for the live database
 
-     # Dev Database settings
-     DEV_HOST = "localhost"
-     DEV_DATABASE = "dev_db"
-     DEV_USER = "postgres"
-     DEV_PASSWORD = "password"
+     # Development Database Settings
+     DEV_HOST = "localhost"               # Host for the development database
+     DEV_DATABASE = "dev_db"              # Name of the development database
+     DEV_USER = "postgres"                # Username for the development database
+     DEV_PASSWORD = "password"            # Password for the development database
      ```
 
 6. Verify installation:
@@ -110,7 +110,6 @@ To run the Asset Management App, you will need:
 ### Errors During Startup
 - **Fatal Error: No module named 'psycopg2'**:
   Ensure Python dependencies are installed correctly.
-  Refer to `AAA___readme___OSN.txt` for detailed setup steps.
 
 - **Warning: WebKit Not Found**:
   Install WebKit if you need to print schedules or agreements.
