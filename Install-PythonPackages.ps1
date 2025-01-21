@@ -1,3 +1,5 @@
+# Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+
 # PowerShell script to install Python packages from a local 'Packages' directory
 # Self-elevate the script if require
 if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {

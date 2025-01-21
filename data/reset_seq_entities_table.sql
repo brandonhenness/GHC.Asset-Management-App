@@ -1,0 +1,1 @@
+SELECT setval('entities_entity_id_seq', (SELECT MAX(entity_id) FROM entities) + 1);

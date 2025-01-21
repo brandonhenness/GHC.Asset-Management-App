@@ -1,4 +1,5 @@
 import os
+import sys
 from jinja2 import Environment, FileSystemLoader
 import pdfkit
 import datetime
@@ -9,9 +10,37 @@ import subprocess
 from main import Asset, Incarcerated, Calculator, Laptop, Book, Enrollment
 import tempfile
 
-path_wkhtmltopdf = "C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe"
-config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+CALLER_SCRIPT_FILEPATH  = sys.argv[0]
+CALLER_SCRIPT_DIRECTORY = os.path.dirname( CALLER_SCRIPT_FILEPATH )
 
+
+# We intentionally uses Unix '/' directory separators
+# # instead of Windows '\', because Python is smarter than Windows.
+path_wkhtmltopdf = "C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe"
+
+AMS_WEBKIT_AVAILABLE = False # default to assuming this is 'not installed'
+
+# Check if WebKit *is* installed (and gracefully handle a FileNotFoundError).
+try:
+    statinfo = os.stat( path_wkhtmltopdf )
+    # If we didn't get a 'FileNotFoundError', we have WebKit ...
+    AMS_WEBKIT_AVAILABLE = True
+except ( FileNotFoundError ) as e:
+    print(
+            f"\n\nWarning: WebKit not found." +
+            f"\n\nWarning: WebKit is required to print schedules or asset loan agreements." +
+            f"\n\nTriage: Refer to 'AAA___readme___OSN.txt' in the 'Asset_Management_App' directory to install this feature." +
+            f"\n\nInfo: Other functions (i.e. database updates and queries ) are unaffected.\n"
+    )
+    input( f"Press Enter to continue... " )
+    AMS_WEBKIT_AVAILABLE = False
+
+
+# TODO: resume update here
+if AMS_WEBKIT_AVAILABLE:
+    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+else:
+    config = None
 
 def generate_pdf_from_template(
     template_path: str,
@@ -28,19 +57,11 @@ def generate_pdf_from_template(
     env = Environment(loader=FileSystemLoader(os.path.dirname(template_path)))
     template = env.get_template(os.path.basename(template_path))
     html = template.render(context)
-    pdfkit.from_string(html, output_path, options=options, configuration=config)
-
-
-def format_name(incarcerated):
-    # Handles None values by replacing them with an empty string
-    first_name = incarcerated.first_name if incarcerated.first_name is not None else ""
-    middle_name = (
-        incarcerated.middle_name if incarcerated.middle_name is not None else ""
-    )
-    last_name = incarcerated.last_name if incarcerated.last_name is not None else ""
-
-    return f"{last_name}, {first_name} {middle_name}".strip()
-
+    if config:
+        pdfkit.from_string(html, output_path, options=options, configuration=config)
+    else:
+        print( f"Warning: WebKit (still) not found. Skipping asset agreement (or schedule) print-out.")
+        input( f"Press Enter to continue... " )
 
 def encode_image_to_base64(
     image_path: str,
@@ -56,24 +77,25 @@ def encode_image_to_base64(
 
 
 def generate_agreement(
-    signature: base64, incarcerated: Incarcerated, assets: list[Asset], current_time
-) -> None:
-    dean_signature = encode_image_to_base64("dean_signature.png")
-    logo = encode_image_to_base64("GHC-logo-horizontal-blue-web.png")
-    icon_logo = encode_image_to_base64("GHC-logo-icon-blue-web.png")
+    signature: base64, incarcerated: Incarcerated, assets: list[ Asset ], current_time, quarter_end_date
+) -> str:
+
+    # TODO: add this college-authorized signature to the signatures DB table
+    college_signature = encode_image_to_base64( f"{CALLER_SCRIPT_DIRECTORY}\\college_signature.png" )
+    logo = encode_image_to_base64( f"{CALLER_SCRIPT_DIRECTORY}\\GHC-logo-horizontal-blue-web.png" )
+    icon_logo = encode_image_to_base64( f"{CALLER_SCRIPT_DIRECTORY}\\GHC-logo-icon-blue-web.png" )
 
     current_date = datetime.datetime.now()
     date = current_date.strftime("%m/%d/%Y")
     facility_acronym = "Stafford Creek Corrections Center"
     college_name = "Grays Harbor College"
-    dean_name = "Peterson, Jayme"
+    college_representative = "Henness, Brandon"
 
-    # exp_date = current_date + relativedelta(months=3)
-    # exp_date = exp_date.strftime("%m/%d/%Y")
-    exp_date = "03/22/2024"
+    quarter_end_date = quarter_end_date.strftime("%m/%d/%Y") # match 'date' format
 
+    
     # Load your footer template
-    with open("templates/agreement_footer.html", "r") as file:
+    with open( f"{CALLER_SCRIPT_DIRECTORY}\\templates\\agreement_footer.html", "r") as file:
         footer_template = Template(file.read())
 
     rendered_footer = footer_template.render(icon_logo=icon_logo)
@@ -84,16 +106,12 @@ def generate_agreement(
         footer_file_path = temp_footer.name
         temp_footer.write(rendered_footer)
 
-    student_name = format_name(incarcerated)
+    student_name = f"{incarcerated}"
     student_data = {"name": student_name, "doc_num": incarcerated.doc_number}
     assets_data = []
 
     for asset in assets:
-        asset_name = ""
-        if asset.asset_type == "LAPTOP" or asset.asset_type == "CALCULATOR":
-            asset_name = asset.model if asset.model is not None else ""
-        elif asset.asset_type == "BOOK":
-            asset_name = asset.title if asset.title is not None else ""
+        asset_name = f"{asset}"
 
         cost = f"${asset.asset_cost:.2f}" if asset.asset_cost is not None else ""
 
@@ -107,12 +125,14 @@ def generate_agreement(
         )
 
     # create agreements folder if it doesn't exist
-    if not os.path.exists("agreements"):
-        os.makedirs("agreements")
+    if not os.path.exists( f"{CALLER_SCRIPT_DIRECTORY}\\agreements" ):
+        os.makedirs( f"{CALLER_SCRIPT_DIRECTORY}\\agreements" )
+
+    output_filepath = f"{CALLER_SCRIPT_DIRECTORY}\\agreements\\{ incarcerated.doc_number }_{ current_time }.pdf"
 
     generate_pdf_from_template(
-        template_path="templates/agreement.html",
-        output_path=f"agreements/{ incarcerated.doc_number }_{ current_time }.pdf",
+        template_path = f"{CALLER_SCRIPT_DIRECTORY}\\templates\\agreement.html",
+        output_path   = output_filepath,
         options={
             "footer-html": footer_file_path,
             "margin-top": "0.35in",
@@ -126,29 +146,33 @@ def generate_agreement(
             "student": student_data,
             "assets": assets_data,
             "student_signature": signature,
-            "dean_signature": dean_signature,
+            "college_signature": college_signature,
             "date": date,
-            "exp_date": exp_date,
+            "exp_date": quarter_end_date,
             "facility_acronym": facility_acronym,
             "college_name": college_name,
             "logo": logo,
-            "dean_name": dean_name,
+            "college_representative": college_representative,
         },
     )
+
+    return output_filepath
 
 
 def generate_schedule(
     incarcerated: Incarcerated, enrolled_courses: list[Enrollment]
-) -> None:
-    logo = encode_image_to_base64("GHC-logo-horizontal-blue-web.png")
-    icon_logo = encode_image_to_base64("GHC-logo-icon-blue-web.png")
+) -> str:
+    logo = encode_image_to_base64( f"{CALLER_SCRIPT_DIRECTORY}\\GHC-logo-horizontal-blue-web.png" )
+    icon_logo = encode_image_to_base64( f"{CALLER_SCRIPT_DIRECTORY}\\GHC-logo-icon-blue-web.png" )
 
-    year = 2024
-    quarter = "Winter"
+    year             = enrolled_courses[0].course_end_date.year
+    quarter          = enrolled_courses[0].course_quarter
     facility_acronym = "Stafford Creek Corrections Center"
-    college_name = "Grays Harbor College"
+    college_name     = "Grays Harbor College"
 
+    schedule_file_name = f"{ incarcerated.doc_number }.pdf"
     courses = []
+
     for course in enrolled_courses:
         course_start_time_str = course.course_start_time.strftime("%H:%M")
         course_end_time_str = course.course_end_time.strftime("%H:%M")
@@ -169,7 +193,7 @@ def generate_schedule(
         )
 
     # Load your footer template
-    with open("templates/schedule_footer.html", "r") as file:
+    with open( f"{CALLER_SCRIPT_DIRECTORY}\\templates\\schedule_footer.html", "r") as file:
         footer_template = Template(file.read())
 
     rendered_footer = footer_template.render(icon_logo=icon_logo)
@@ -180,16 +204,18 @@ def generate_schedule(
         footer_file_path = temp_footer.name
         temp_footer.write(rendered_footer)
 
-    student_name = format_name(incarcerated)
+    student_name = f"{incarcerated}"
     student_data = {"name": student_name, "doc_num": incarcerated.doc_number}
 
     # create schedules folder if it doesn't exist
-    if not os.path.exists("schedules"):
-        os.makedirs("schedules")
+    if not os.path.exists( f"{CALLER_SCRIPT_DIRECTORY}\\schedules" ):
+        os.makedirs( f"{CALLER_SCRIPT_DIRECTORY}\\schedules" )
+
+    schedule_filepath = f"{CALLER_SCRIPT_DIRECTORY}\\schedules\\{schedule_file_name}"
 
     generate_pdf_from_template(
-        template_path="templates/schedule.html",
-        output_path=f"schedules/{ incarcerated.doc_number }.pdf",
+        template_path = f"{CALLER_SCRIPT_DIRECTORY}\\templates\\schedule.html",
+        output_path   = schedule_filepath,
         options={
             "footer-html": footer_file_path,
             "margin-top": "0.35in",
@@ -210,11 +236,35 @@ def generate_schedule(
         },
     )
 
+    # tell the caller where we saved the file
+    return f"{schedule_filepath}"
+
+
+
+# Below, we call PowerShell, which then calls Internet Explorer. We call I.E
+# because it can display and print almost any kind of file. We use PowerShell
+# to start I.E. because subprocess.call() would otherwise stall until I.E. is
+# closed. It is a better experience to not 'block' Python, except when needed.
+#
+# Because subprocess.call() is sensitive to the spaces in I.E.'s directory
+# path, we use Window's DOS-friendly 8.3 'short names' for "Program Files"
+# (progra~1) and "Internet Explorer" (intern~1).
+
+# TODO: See if we can get an Office-automation -like effect to prompt IE to
+# print the file and exit, w/o the user having to manually intervene.
 
 # Print the PDF file
 def command_print(pdf_file):
-    command = "{} {}".format(
-        "PDFtoPrinter.exe",
+
+    print( "Opening 'Internet Explorer' and waiting for it to exit... " )
+
+
+    subprocess_command = "{} {}".format(
+        # was:  "PDFtoPrinter.exe",
+        'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -Command c:\\progra~1\\intern~1\\iexplore.exe',
         pdf_file,
     )
-    subprocess.call(command, shell=True)
+
+    subprocess.call( subprocess_command, shell=True )
+
+    print( "OK, 'Internet Explorer' was started up. Continuing ... " )

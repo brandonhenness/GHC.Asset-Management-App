@@ -233,8 +233,8 @@
 				<td width=198 valign=top style='border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt;height:32pt'>
-					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>Dean</b></p>
-					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ dean_name }}</p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>College Representative</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ college_representative }}</p>
 				</td>
 				<td width=179 valign=top style='border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -249,15 +249,9 @@
 			style='width:100%;border-collapse:collapse;border:none'>
 			<!-- Asset Table Headers -->
 			<tr>
-				<th colspan="4"
-					style='border:solid windowtext 1.0pt;border-bottom:none;border-top:none;padding:0in 5.4pt 0in 5.4pt;text-align:left;'>
-					<b>Asset(s)</b>
-				</th>
-			</tr>
-			<tr>
 				<th
 					style='border:solid windowtext 1.0pt;border-top:none;border-right:none;padding:0in 5.4pt 0in 5.4pt;'>
-					ID</th>
+					Asset ID</th>
 				<th
 					style='border:solid windowtext 1.0pt;border-top:none;border-right:none;border-left:none;padding:0in 5.4pt 0in 5.4pt;'>
 					Type</th>
@@ -285,8 +279,8 @@
 					{{ asset.cost }}</td>
 			</tr>
 			{% endfor %}
-			{% endif %}
 		</table>
+		{% endif %}
 
 		<p class=MsoNormal align=center style='margin-top:8.0pt;text-align:center;
 line-height:normal'><i>This agreement governs the use of the specified asset(s)
@@ -435,10 +429,10 @@ line-height:normal'><i>Grays Harbor College reserves the right to interpret and
 				</td>
 			</tr>
 			<tr style="height: 50px;">
-				<td class="label-cell" style="text-align: right; width: 10%"><b>Dean Signature:</b></td>
+				<td class="label-cell" style="text-align: right; width: 10%"><b>College Representative:</b></td>
 				<td style="width: 30%;">
 					<span class="signature-line">
-						<img src="data:image/png;base64,{{ dean_signature }}" class="signature-img">
+						<img src="data:image/png;base64,{{ college_signature }}" class="signature-img">
 					</span>
 
 				</td>

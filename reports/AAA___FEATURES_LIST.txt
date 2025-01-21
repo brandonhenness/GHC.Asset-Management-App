@@ -1,0 +1,60 @@
+
+TODO:
+	1. Go through this directory, examining files and moving them to 'reports'
+	
+			J:\Asset_Management_App\data\
+	
+	
+	2. Implement the 'import' functionality (#3 below)
+
+	
+	3. Go through these files, and finish 
+	
+		a) J:\Asset_Management_App\documentation\SQLAlchemy___Automap_interactive_session___logged_SQL_commands.txt
+			>>> This is the output of the SQL queries in the working part of my AutoMap investigation
+			
+		b) J:\Asset_Management_App\documentation\SQLAlchemy___Automap_interactive_session.txt
+			>>> This is the AutoMap session, including the (mysteriously) broken instance creation:
+			
+					>>> headphones=Assets(asset_id="HEADPHONES")
+		
+		
+		
+1. Report system running for parameter-less output queries [ DONE, in v. 1.5.0 ]
+    currently_issued_books_list.sql
+	database_integrity_checks.sql
+	get_available_laptops.sql
+	get_currently_issued_books.sql
+	get_issued_assets.sql
+	get_last_issued_laptop.sql
+	get_unsigned_assets.sql
+
+
+2. Report system for interactive queries [ DONE, in v. 1.5.0 ]
+	get_quarter_schedule.sql ------------- fetches a quarter schedule
+	find_user_by_first_or_last_name.sql -- look up a named person (e.g. their OSN username)
+
+3. Handle these cases [ DONE, in v. 1.5.0 ]
+
+	-- :scheduled_quarter => ['Winter', 'Spring', 'Summer', 'Fall']
+	-- :scheduled_year    => Enter a four-digit year for this query (e.g. 2024)
+	-- :defaults          => { 'asset_type': 'LAPTOP', 'asset_id': 'EDU0249' }
+
+
+4. Create a mechanism for importing information into the database [ DONE, in v. 1.5.0 ]
+	import_calculators.sql ------------- DONE
+	import_laptops.sql ----------------- DONE
+	import_books.sql ------------------- DONE
+	import_books_details.sql ----------- DONE
+	import_incarcerated_from_Omni.sql -- DONE
+
+
+"""
+
+Is this an export, an import, or a report?
+
+	1. Export
+	2. Import
+	3. Report
+"""
+
