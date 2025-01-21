@@ -124,5 +124,5 @@ Asset Management App is licensed under the [GNU General Public License v3.0](LIC
 ## Contact
 For any inquiries or feedback, please reach out to:
 - **Brandon Henness**
-- Email: [brhenness@ghcares.org](mailto:brhenness@ghcares.org)
+- Email: [brhenness@ghcares.org](mailto:brandon.henness@doc1.wa.gov)
 
