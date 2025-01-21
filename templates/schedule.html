@@ -1,0 +1,315 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+	<meta name=Generator content="Microsoft Word 15 (filtered)">
+	<style>
+		<!--
+		body {
+			margin: 0;
+			/* Removes margin from the body */
+			padding: 0;
+			/* Optionally, removes padding as well */
+			/* Other global styles can go here */
+			font-size: 11.0pt;
+		}
+
+		/* Style Definitions */
+		p.MsoNormal,
+		li.MsoNormal,
+		div.MsoNormal {
+			margin-top: 0in;
+			margin-right: 0in;
+			margin-bottom: 8.0pt;
+			margin-left: 0in;
+			line-height: 107%;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		p.MsoFooter,
+		li.MsoFooter,
+		div.MsoFooter {
+			mso-style-link: "Footer Char";
+			margin: 0in;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		p.MsoListParagraph,
+		li.MsoListParagraph,
+		div.MsoListParagraph {
+			margin-top: 0in;
+			margin-right: 0in;
+			margin-bottom: 8.0pt;
+			margin-left: .5in;
+			line-height: 107%;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		p.MsoListParagraphCxSpFirst,
+		li.MsoListParagraphCxSpFirst,
+		div.MsoListParagraphCxSpFirst {
+			margin-top: 0in;
+			margin-right: 0in;
+			margin-bottom: 0in;
+			margin-left: .5in;
+			line-height: 107%;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		p.MsoListParagraphCxSpMiddle,
+		li.MsoListParagraphCxSpMiddle,
+		div.MsoListParagraphCxSpMiddle {
+			margin-top: 0in;
+			margin-right: 0in;
+			margin-bottom: 0in;
+			margin-left: .5in;
+			line-height: 107%;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		p.MsoListParagraphCxSpLast,
+		li.MsoListParagraphCxSpLast,
+		div.MsoListParagraphCxSpLast {
+			margin-top: 0in;
+			margin-right: 0in;
+			margin-bottom: 8.0pt;
+			margin-left: .5in;
+			line-height: 107%;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		span.FooterChar {
+			mso-style-name: "Footer Char";
+			mso-style-link: Footer;
+		}
+
+		.MsoChpDefault {
+			font-family: "Calibri";
+		}
+
+		.MsoPapDefault {
+			margin-bottom: 8.0pt;
+			line-height: 107%;
+		}
+
+		div.WordSection1 {
+			page: WordSection1;
+		}
+
+		/* List Definitions */
+		ol {
+			margin-bottom: 0in;
+		}
+
+		ul {
+			margin-bottom: 0in;
+			padding-left: 20px;
+		}
+
+		header {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+
+		.header-table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		.header-logo {
+			width: 420px;
+			/* Adjust as needed */
+			height: auto;
+		}
+
+		.header-text {
+			color: #1e3c7a;
+			font-family: 'Arial Narrow', Arial, sans-serif;
+			font-weight: bold;
+			text-align: right;
+			font-size: 20px;
+			width: auto;
+		}
+
+		.signature-table {
+			width: 100%;
+		}
+
+		.signature-table td {
+			vertical-align: bottom;
+			/* Aligns content to the bottom of the cell */
+			position: relative;
+			/* Needed for absolute positioning of the signature images */
+		}
+
+		.label-cell {
+			width: 1%;
+			/* Minimal width but equal for both */
+			white-space: nowrap;
+			/* Prevents the text from wrapping */
+			text-align: right;
+			/* Aligns the label to the right */
+		}
+
+		.signature-line {
+			display: block;
+			border-bottom: 1px solid black;
+			width: 100%;
+		}
+
+		.date-line {
+			display: block;
+			border-bottom: 1px solid black;
+			width: 100%;
+		}
+
+		.signature-img {
+			position: absolute;
+			bottom: -20px;
+			/* Adjust this value as needed to overlap the line */
+			left: 0;
+			max-width: 100%;
+			height: 60px;
+		}
+		-->
+	</style>
+
+</head>
+
+<body style='font-size:11.0pt;font-family:calibri'>
+
+	<div class=WordSection1>
+		<header>
+			<table class="header-table">
+				<tr>
+					<td>
+						<img src="data:image/png;base64,{{ logo }}" class="header-logo">
+					</td>
+					<td class="header-text">
+						STUDENT SCHEDULE
+					</td>
+				</tr>
+			</table>
+		</header>
+		<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+			style='width:100%;white-space: nowrap;border-collapse:collapse;border:none'>
+			<tr style='height:32pt'>
+				<td colspan=3 valign=top style='width: 60%;border:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>Name</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ student.name }}</p>
+				</td>
+				<td valign=top style='width:20%;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>DOC number</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ student.doc_num }}</p>
+				</td>
+			</tr>
+			<tr style='height:32pt'>
+				<td width=161 valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>Facility</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ facility_acronym }}</p>
+				</td>
+				<td width=180 valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>College</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ college_name }}</p>
+				</td>
+				<td width=198 valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>Quarter</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ quarter }}</p>
+				</td>
+				<td width=179 valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>Year</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ year }}</p>
+				</td>
+			</tr>
+		</table>
+		{% if courses %}
+		<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+			style='width:100%;border-collapse:collapse;border:none'>
+			<!-- Courses Table Headers -->
+			<tr>
+				<th colspan="7"
+					style='border:solid windowtext 1.0pt;border-bottom:none;border-top:none;padding:0in 5.4pt 0in 5.4pt;text-align:left;'>
+					<b>Course(s)</b>
+				</th>
+			</tr>
+			<tr>
+				<th
+					style='border:solid windowtext 1.0pt;border-top:none;border-right:none;padding:0in 5.4pt 0in 5.4pt;'>
+					Prefix</th>
+				<th
+					style='border:solid windowtext 1.0pt;border-top:none;border-right:none;border-left:none;padding:0in 5.4pt 0in 5.4pt;'>
+					Code</th>
+				<th
+					style='width:100%;border:solid windowtext 1.0pt;border-top:none;border-right:none;border-left:none;padding:0in 5.4pt 0in 5.4pt;'>
+					Course Title</th>
+				<th
+					style='border:solid windowtext 1.0pt;border-top:none;border-right:none;border-left:none;padding:0in 5.4pt 0in 5.4pt;'>
+					Credits</th>
+				<th
+					style='border:solid windowtext 1.0pt;border-top:none;border-right:none;border-left:none;padding:0in 5.4pt 0in 5.4pt;'>
+					Days</th>
+				<th
+					style='border:solid windowtext 1.0pt;border-top:none;border-right:none;border-left:none;padding:0in 5.4pt 0in 5.4pt;'>
+					Hours</th>
+				<th style='border:solid windowtext 1.0pt;border-top:none;border-left:none;padding:0in 5.4pt 0in 5.4pt;'>
+					Location</th>
+			</tr>
+
+			<!-- Course Rows -->
+			{% for course in courses %}
+			<tr>
+				<td
+					style='border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;margin-bottom:0in;line-height:normal;font-size:11.0pt;font-family:calibri;white-space: nowrap'>
+					{{ course.prefix }}</td>
+				<td
+					style='border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;margin-bottom:0in;line-height:normal;font-size:11.0pt;font-family:calibri;white-space: nowrap'>
+					{{ course.code }}</td>
+				<td
+					style='border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;margin-bottom:0in;line-height:normal;font-size:11.0pt;font-family:calibri;white-space: nowrap'>
+					{{ course.name }}</td>
+				<td
+					style='border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;margin-bottom:0in;line-height:normal;font-size:11.0pt;font-family:calibri;white-space: nowrap'>
+					{{ course.credits }}</td>
+				<td
+					style='border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;margin-bottom:0in;line-height:normal;font-size:11.0pt;font-family:calibri;white-space: nowrap'>
+					{{ course.days }}</td>
+				<td
+					style='border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;margin-bottom:0in;line-height:normal;font-size:11.0pt;font-family:calibri;white-space: nowrap'>
+					{{ course.hours }}</td>
+				<td
+					style='border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;margin-bottom:0in;line-height:normal;font-size:11.0pt;font-family:calibri;white-space: nowrap'>
+					{{ course.location }}</td>
+			</tr>
+			<tr>
+				<td colspan="7"
+					style='border:solid windowtext 1.0pt;border-top:none;padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>Course
+							Description</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ course.description }}</p>
+				</td>
+			</tr>
+			{% endfor %}
+			{% endif %}
+		</table>
+
+	</div>
+</body>
+
+</html>

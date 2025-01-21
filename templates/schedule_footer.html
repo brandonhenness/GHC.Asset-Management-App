@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .footer-table {
+            width: 100%;
+            table-layout: fixed;
+            /* Ensures equal width for all columns */
+            border-collapse: collapse;
+        }
+
+        .footer-cell {
+            vertical-align: middle;
+            text-align: left;
+        }
+
+        .footer-cell.center {
+            text-align: center;
+        }
+
+        .footer-cell.right {
+            text-align: right;
+        }
+
+        .page-number {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function subst() {
+            var vars = {};
+            var x = document.location.search.substring(1).split('&');
+            for (var i in x) { var z = x[i].split('=', 2); vars[z[0]] = unescape(z[1]); }
+            document.getElementById("pageNumber").textContent = vars.page;
+            document.getElementById("totalPages").textContent = vars.topage;
+        }
+    </script>
+
+    <table class="footer-table">
+        <tr style="font-size: 11.0pt; font-family: Calibri;">
+            <td class="footer-cell" style="width: 33%;">
+                (Rev. 2023/12/28)
+            </td>
+            <td class="footer-cell center" style="width: 34%;">
+                Page <span id="pageNumber"></span> of <span id="totalPages"></span>
+            </td>
+            <td class="footer-cell right" style="width: 33%;">
+                <img src="data:image/png;base64,{{ icon_logo }}" style="height: 100px;">
+            </td>
+        </tr>
+    </table>
+
+    <script>subst();</script>
+</body>
+
+</html>

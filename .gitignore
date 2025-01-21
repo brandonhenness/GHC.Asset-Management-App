@@ -1,0 +1,15 @@
+*.exe
+*.pdf
+*.xlsx
+
+packages/*
+
+schedules/*
+
+agreements/*
+
+__pycache__/*
+
+.vscode/*
+
+data/*

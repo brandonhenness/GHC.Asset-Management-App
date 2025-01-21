@@ -1,0 +1,455 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+	<meta name=Generator content="Microsoft Word 15 (filtered)">
+	<style>
+		<!--
+		body {
+			margin: 0;
+			/* Removes margin from the body */
+			padding: 0;
+			/* Optionally, removes padding as well */
+			/* Other global styles can go here */
+			font-size: 11.0pt;
+		}
+
+		/* Style Definitions */
+		p.MsoNormal,
+		li.MsoNormal,
+		div.MsoNormal {
+			margin-top: 0in;
+			margin-right: 0in;
+			margin-bottom: 8.0pt;
+			margin-left: 0in;
+			line-height: 107%;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		p.MsoFooter,
+		li.MsoFooter,
+		div.MsoFooter {
+			mso-style-link: "Footer Char";
+			margin: 0in;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		p.MsoListParagraph,
+		li.MsoListParagraph,
+		div.MsoListParagraph {
+			margin-top: 0in;
+			margin-right: 0in;
+			margin-bottom: 8.0pt;
+			margin-left: .5in;
+			line-height: 107%;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		p.MsoListParagraphCxSpFirst,
+		li.MsoListParagraphCxSpFirst,
+		div.MsoListParagraphCxSpFirst {
+			margin-top: 0in;
+			margin-right: 0in;
+			margin-bottom: 0in;
+			margin-left: .5in;
+			line-height: 107%;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		p.MsoListParagraphCxSpMiddle,
+		li.MsoListParagraphCxSpMiddle,
+		div.MsoListParagraphCxSpMiddle {
+			margin-top: 0in;
+			margin-right: 0in;
+			margin-bottom: 0in;
+			margin-left: .5in;
+			line-height: 107%;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		p.MsoListParagraphCxSpLast,
+		li.MsoListParagraphCxSpLast,
+		div.MsoListParagraphCxSpLast {
+			margin-top: 0in;
+			margin-right: 0in;
+			margin-bottom: 8.0pt;
+			margin-left: .5in;
+			line-height: 107%;
+			font-size: 11.0pt;
+			font-family: "Calibri";
+		}
+
+		span.FooterChar {
+			mso-style-name: "Footer Char";
+			mso-style-link: Footer;
+		}
+
+		.MsoChpDefault {
+			font-family: "Calibri";
+		}
+
+		.MsoPapDefault {
+			margin-bottom: 8.0pt;
+			line-height: 107%;
+		}
+
+		div.WordSection1 {
+			page: WordSection1;
+		}
+
+		/* List Definitions */
+		ol {
+			margin-bottom: 0in;
+		}
+
+		ul {
+			margin-bottom: 0in;
+			padding-left: 20px;
+		}
+
+		header {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+
+		.header-table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		.header-logo {
+			width: 420px;
+			/* Adjust as needed */
+			height: auto;
+		}
+
+		.header-text {
+			color: #1e3c7a;
+			font-family: 'Arial Narrow', Arial, sans-serif;
+			font-weight: bold;
+			text-align: right;
+			font-size: 20px;
+			width: auto;
+		}
+
+		.signature-table {
+			width: 100%;
+		}
+
+		.signature-table td {
+			vertical-align: bottom;
+			/* Aligns content to the bottom of the cell */
+			position: relative;
+			/* Needed for absolute positioning of the signature images */
+		}
+
+		.label-cell {
+			width: 1%;
+			/* Minimal width but equal for both */
+			white-space: nowrap;
+			/* Prevents the text from wrapping */
+			text-align: right;
+			/* Aligns the label to the right */
+		}
+
+		.signature-line {
+			display: block;
+			border-bottom: 1px solid black;
+			width: 100%;
+		}
+
+		.date-line {
+			display: block;
+			border-bottom: 1px solid black;
+			width: 100%;
+		}
+
+		.signature-img {
+			position: absolute;
+			bottom: -20px;
+			/* Adjust this value as needed to overlap the line */
+			left: 0;
+			max-width: 100%;
+			height: 60px;
+		}
+		-->
+	</style>
+
+</head>
+
+<body style='font-size:11.0pt;font-family:calibri'>
+
+	<div class=WordSection1>
+		<header>
+			<table class="header-table">
+				<tr>
+					<td>
+						<img src="data:image/png;base64,{{ logo }}" class="header-logo">
+					</td>
+					<td class="header-text">
+						FACILITIES TERMS OF USE &<br>ASSET LOAN AGREEMENT
+					</td>
+				</tr>
+			</table>
+		</header>
+		<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+			style='width:100%;white-space: nowrap;border-collapse:collapse;border:none'>
+			<tr style='height:32pt'>
+				<td colspan=2 valign=top style='width: 60%;border:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>Name</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ student.name }}</p>
+				</td>
+				<td valign=top style='width:20%;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>DOC number</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ student.doc_num }}</p>
+				</td>
+				<td valign=top style='width:20%;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>Date</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ date }}</p>
+				</td>
+			</tr>
+			<tr style='height:32pt'>
+				<td width=161 valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>Facility</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ facility_acronym }}</p>
+				</td>
+				<td width=180 valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>College</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ college_name }}</p>
+				</td>
+				<td width=198 valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>Dean</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ dean_name }}</p>
+				</td>
+				<td width=179 valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:32pt'>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'><b>Exp Date</b></p>
+					<p class=MsoNormal style='margin-bottom:0in;line-height:normal'>{{ exp_date }}</p>
+				</td>
+			</tr>
+		</table>
+		{% if assets %}
+		<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+			style='width:100%;border-collapse:collapse;border:none'>
+			<!-- Asset Table Headers -->
+			<tr>
+				<th colspan="4"
+					style='border:solid windowtext 1.0pt;border-bottom:none;border-top:none;padding:0in 5.4pt 0in 5.4pt;text-align:left;'>
+					<b>Asset(s)</b>
+				</th>
+			</tr>
+			<tr>
+				<th
+					style='border:solid windowtext 1.0pt;border-top:none;border-right:none;padding:0in 5.4pt 0in 5.4pt;'>
+					ID</th>
+				<th
+					style='border:solid windowtext 1.0pt;border-top:none;border-right:none;border-left:none;padding:0in 5.4pt 0in 5.4pt;'>
+					Type</th>
+				<th
+					style='width:100%;border:solid windowtext 1.0pt;border-top:none;border-right:none;border-left:none;padding:0in 5.4pt 0in 5.4pt;'>
+					Name</th>
+				<th style='border:solid windowtext 1.0pt;border-top:none;border-left:none;padding:0in 5.4pt 0in 5.4pt;'>
+					Value</th>
+			</tr>
+
+			<!-- Asset Rows -->
+			{% for asset in assets %}
+			<tr>
+				<td
+					style='border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;margin-bottom:0in;line-height:normal;font-size:11.0pt;font-family:calibri'>
+					{{ asset.id }}</td>
+				<td
+					style='border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;margin-bottom:0in;line-height:normal;font-size:11.0pt;font-family:calibri'>
+					{{ asset.type }}</td>
+				<td
+					style='border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;margin-bottom:0in;line-height:normal;font-size:11.0pt;font-family:calibri'>
+					{{ asset.name }}</td>
+				<td
+					style='border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;margin-bottom:0in;line-height:normal;font-size:11.0pt;font-family:calibri;text-align:right'>
+					{{ asset.cost }}</td>
+			</tr>
+			{% endfor %}
+			{% endif %}
+		</table>
+
+		<p class=MsoNormal align=center style='margin-top:8.0pt;text-align:center;
+line-height:normal'><i>This agreement governs the use of the specified asset(s)
+				and facilities provided by the lending institution. The asset(s) and facilities
+				are to be used solely for educational purposes within the program in which the student
+				is enrolled.</i></p>
+
+		<p class=MsoNormal align=center style='text-align:center;line-height:normal'><b><span
+					style='font-size:16.0pt;font-family:"Arial Narrow",sans-serif;color:#1E3C7A'>TERMS
+					&amp; RESPONSIBILITIES</span></b></p>
+
+		<ul class="outer-list">
+			<li style='font-size:11.0pt;font-family:calibri;'>I understand that assets
+				and facilities remain the property of
+				the lending institution and must be returned upon request or withdrawal from
+				the program.</li>
+
+			<li>I acknowledge that assets are loaned for a specified period and
+				agree to return them in a timely fashion.</li>
+
+			<li>I will use assets solely for non-commercial, educational
+				purposes, which includes preparing release-related documents like resumes and
+				release plans, while complying with DOC policies, local, state, and federal
+				laws.</li>
+
+			<li>I will not use assets for illegal activities, unauthorized work, legal/religious/personal
+				document creation, or activities that violate DOC policies.</li>
+
+			<li>I understand that correspondence study is permitted only when
+				using the assets provided in the computer lab.</li>
+
+			<li>I will not create, store, or transmit prohibited content,
+				including:</li>
+			<ul class="inner-list">
+				<li>Escape plans and/or other information related to escape.</li>
+
+				<li>Technical/detailed information on security systems, equipment and
+					practices used in the correctional field.</li>
+
+				<li>Any plans for activity that violates state/federal law, the
+					Washington Administrative Code, Department policy, and/or local facility rules.</li>
+
+				<li>Any instructional and/or "how to" material for committing illegal
+					activities.</li>
+
+				<li>Any depictions or description on the procedures for constructing
+					or using weapons, ammunition, bombs, and/or other destructive devices, or
+					includes life sized photograph(s)/graphic illustration(s) of these items.</li>
+
+				<li>Any narrative that provides instructions on martial arts,
+					fighting/self-defense techniques, and/or how to disable/disarm others.</li>
+
+				<li>Any text that appears to be in code.</li>
+
+				<li>Written/graphic information on security equipment/operations or
+					facility blueprints/diagrams.</li>
+
+				<li>Detailed maps/charts of Washington, Oregon, Idaho, and/or British
+					Columbia.</li>
+
+				<li>Sexually explicit material as defined in WAC 137-48-020 and/or
+					references sexually explicit behavior. May not include altered images or
+					strategically placed graphics.</li>
+
+				<li>Gang symbols or symbols of other unauthorized groups that may
+					reasonably be thought to precipitate violence.</li>
+
+				<li>Games, videos, and messages that are not part of the education
+					program.</li>
+			</ul>
+			<li>I will not encrypt or password-protect any files on the assets
+				provided by the institution, to maintain transparency and avoid the appearance
+				of concealing unauthorized files or usage.</li>
+
+			<li>I will use only institution-approved software and programs on
+				electronic devices and will not access prohibited websites or online services.</li>
+
+			<li>I will not cheat, misrepresent my own work, or allow others to do my work.</li>
+
+			<li>I will not lend, share, or transfer any assets, accounts, passwords, or files to others without explicit authorization from the institution.</li>
+
+			<li>I will not use any assets, accounts, or files assigned to others without explicit authorization from the institution.</li>
+
+			<li>I will not deface, destroy, misuse, or alter any assets. This includes unauthorized repairs, modifications, or disabling of security features.</li>
+
+			<li>I will handle all assets with care, ensuring they are not
+				subjected to damage from extreme conditions, rough handling, dropping, exposure
+				to liquids, or being left outdoors or unattended. Additionally, I will avoid
+				using any assets near food or drink to prevent potential damage.</li>
+
+			<li>I am responsible for any damage, loss, or costs associated with the repair or replacement of the assets due to my intentional or negligent handing.</li>
+
+			<li>I will treat books and printed materials with care and use
+				consumables like paper responsibly for educational purposes only.</li>
+
+			<li>Before returning the asset(s), I will not remove any data,
+				personal or otherwise, to ensure full transparency and enable appropriate
+				inspection by authorized individuals.</li>
+
+			<li>I will keep all accounts and passwords secure and confidential.</li>
+
+			<li>I will ensure that assets are always in my possession or in a
+				secure location.</li>
+
+			<li>While using any provided assets, I will ensure my personal
+				information remains confidential.</li>
+
+			<li>I will bring any assigned asset(s) to school, ensuring they are available
+				for educational purposes as directed by the instructor.</li>
+
+			<li>I will promptly report any damage, malfunction, or loss of
+				assets, as well as any concerns related to data stored on assets.</li>
+
+			<li>I will inform the institution in case of withdrawal or transfer
+				from the program to facilitate the timely return or transfer of assets as
+				necessary.</li>
+
+			<li>I will comply with all inspection procedures for the assets as
+				set by the institution.</li>
+
+			<li><b>I understand that failure to adhere to these terms in full may result in consequences, including loss of asset usage privileges, potential impact on educational program participation, and disciplinary action to include serious infraction as defined in WAC 137-25-030.</b></li>
+		</ul>
+		<p class=MsoNormal align=center style='margin-top:8.0pt;text-align:center;
+line-height:normal'><i>Grays Harbor College reserves the right to interpret and
+				enforce these rules in a manner that aligns with the policies of the Department
+				of Corrections, ensuring compliance and maintaining the integrity of our
+				educational programs.</i></p>
+
+		<p class=MsoNormal align=center style='text-align:center;line-height:normal'><b><span
+					style='font-size:16.0pt;font-family:"Arial Narrow",sans-serif;color:#1E3C7A'>ACKNOWLEDGMENT
+					&amp; AGREEMENT</span></b></p>
+
+		<p class=MsoNormal style='line-height:normal'>The student hereby acknowledges their understanding of, and agreement to, the terms and conditions outlined in this document. By signing, the student commits to adhering to these responsibilities and acknowledges that failure to comply with any of these terms may result in immediate consequences. These consequences include, but are not limited to, the voiding of this agreement, potential disciplinary infractions as per Department of Corrections (DOC) policies, revocation of access to facilities and assets, and the possibility of being dropped from the education program. Such actions will be taken to uphold the integrity and security of the educational environment within the correctional facility.</p>
+
+		<table class="signature-table">
+			<tr style="height: 50px;">
+				<td class="label-cell" style="text-align: right; width: 10%;"><b>Student Signature:</b></td>
+				<td style="width: 50%;">
+					<span class="signature-line">
+						<img src="data:image/png;base64,{{ student_signature }}" class="signature-img">
+					</span>
+				</td>
+				<td class="label-cell" style="text-align: right;"><b>Date:</b></td>
+				<td>
+					<span class="date-line">{{ date }}</span>
+				</td>
+			</tr>
+			<tr style="height: 50px;">
+				<td class="label-cell" style="text-align: right; width: 10%"><b>Dean Signature:</b></td>
+				<td style="width: 30%;">
+					<span class="signature-line">
+						<img src="data:image/png;base64,{{ dean_signature }}" class="signature-img">
+					</span>
+
+				</td>
+				<td class="label-cell" style="text-align: right;"><b>Date:</b></td>
+				<td>
+					<span class="date-line">{{ date }}</span>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+</body>
+
+</html>
