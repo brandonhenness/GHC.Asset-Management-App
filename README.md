@@ -81,27 +81,18 @@ To run the Asset Management App, you will need:
 ## Usage
 
 ### Running the Application
-1. **Set up the default printer**:
-   - Configure the printer to print double-sided by default.
-   - Example for OSN:
-     ```
-     \\osnflabr1500\OSNpABR1007
-     ```
-
-2. Plug in the **signature pad** and configure the **barcode scanner**:
+1. Plug in the **signature pad** and configure the **barcode scanner**:
    - Barcode scanner settings should add an **ENTER** after each scan.
 
-3. Launch the app:
+2. Launch the app:
    ```bash
-   python app.py
+   python main.py
    ```
-4. Access the app via your web browser at `http://localhost:5000`.
-
-5. Follow any on-screen instructions for errors or warnings.
+4. Follow any on-screen instructions for errors or warnings.
 
 ### Exiting the Application
 1. Return to the main menu by pressing `ENTER`.
-2. Exit the app by pressing `q`.
+2. Exit the app by pressing `0`.
 
 ---
 
