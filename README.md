@@ -1,5 +1,8 @@
 # Asset Management App
 
+## ⚠️ Important Notice
+This repository is no longer being updated. The Asset Management App is being rewritten and included as part of the [Prometheus web app](https://github.com/brandonhenness/Prometheus). Please refer to the Prometheus repository for the latest version and updates.
+
 ## Overview
 The **Asset Management App** is a solution designed to track and manage educational assets, including laptops, books, calculators, and more, at the Stafford Creek Corrections Center (SCCC) for Grays Harbor College. The application ensures efficient inventory management by storing all data in a PostgreSQL database.
 
@@ -63,6 +66,3 @@ Asset Management App is licensed under the [GNU General Public License v3.0](LIC
 For any inquiries or feedback, please reach out to:
 - **Brandon Henness**
 - Email: [brhenness@ghcares.org](mailto:brandon.henness@doc1.wa.gov)
-
----
-Thank you for using the Asset Management App! Your contributions and feedback are greatly appreciated.
