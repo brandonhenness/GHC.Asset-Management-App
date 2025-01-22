@@ -1,62 +1,3 @@
-# Notes to AMS script maintainers:
-#   1) Global variable names are ALL UPPERCASE and should start with AMS_:
-#      > config.VERSION -- reported in menu headers; this is the AMS script version
-#      > config.LIVE_DATABASE -- directs AMS to use the live SQL database (True) or the test DB (False)
-#      > config.VERBOSE_ERROR -- prints verbose AMS feedback; this is enabled, if you use the test DB
-#      > SCRIPT_FILEPATH -- the fully qualified name of the AMS script
-#      > SCRIPT_DIRECTORY -- the AMS script directory; the agreements / schedules / templates / reports files are relative to this directory
-#      > AMS_WEBKIT_AVAILABLE -- used in generate_pdf.py; this blocks PDF generation (and prevents AMS crashes) if WebKit is not locally installed
-#      > 
-#      > 
-# ==========
-#   2) The reports either write to (when importing data) or write to .CSV files
-#      a) CSV stands for 'comma separated variables'
-#         1) ANy ISBN needs to be formatted, when you open and/or edit a file. 
-
-### Here's how to format ISBN numbers:
-
-#      b) Import scripts run through the CSV file one line at a time. If there is an error on line #10,
-#         then lines #11 and later WILL NOT RUN. Find and fix the error on line #10, then re-run the
-#         import report. Although lines #1 to #9 are already imported, it does no damage to overwrite the
-#         database data with an exact copy of the existing data; in fact, import reports are useful to
-#         update and/or correct data in the database.
-#      c) The "File Open" dialog   **suggests**   a CSV filename for the report input or output.
-#         It is perfectly OK (and wise) to create a CSV file with a different name and/or in another
-#         directory. These files are an examples (which were originally lost, found, and then then imported):
-#            > "T:\Business Reference Library Room 1222\import_books_details_Oct_2024.csv"
-#            > "T:\Business Reference Library Room 1222\import_books_Oct_2024.csv"
-# ==========
-#   3) Reports control variables (for config.VERSION >= 1.5.0)
-#      > AMS_import --------- whether this is a SQL import query (True) or an SQL export or report (False, the default); this controls whether the .CSV file is read as input or written as output
-#      > AMS_insert_tables -- all SQL tables used in an INSERT script; this is used to query the database for (non-) nullable columns and SQL column types
-#      > AMS_nullable ------- a list of SQL table columns which  MIGHT  have a 'Null' value; this script queries the database for this information; empty CSV file fields are treated as NULL
-#      > AMS_notnull -------- a list of SQL table columns which MAY NOT have a 'Null' value; this script queries the database for this information; empty CSV file fields are treated as ''
-#      > AMS_coltypes ------- a dictionary of SQL table columns and their data types; this script queries the database for this information
-# NOTE: Errors are reported whenever any two tables in 'AMS_insert_tables' have the same column name (e.g. 'asset_id') but different nullable properties or SQL data types.
-#      > AMS_coltypes_overrides -- a dictionary of SQL table columns and their data types; this script queries the database for this information
-#      > AMS_returning ------ this overrides the default of reporting the first SELECT-ed column (e.g. handle "SELECT entity_id, doc_number FROM incarcerated ... RETURNING doc_number" with "AMS_returning = 'doc_number'")
-#      > 
-#      > 
-#       Option #7 on the AMS main menu, "Run a SQL report" includes an embedded
-#       DSL (a domain-specific language, which is, essentially, a self-authored
-#       configuration / scripting scheme). This DSL alters how this script
-#       (main.py) parses the .SQL files in the 'reports' subdirectory and
-#       applies variable substitutions and SQL argument quoting. These
-#       "extensions" are coded as SQL comments, starting in the first column,
-#       like this example:
-#          -- :defaults => { 'AMS_import': True, 'AMS_insert_tables': [ 'assets', 'laptops' ] }
-#       All comments starting with '---' or which are preceeded by SQL syntax
-#       (incl. any tabs or spaces) are ignored.
-
-#       Embedded directives (e.g. 'AMS_import') which are intended to influence
-#       this Python script's execution are prefixed with AMS_ to not trip up  SQL query semantics. This code is commented,
-#       but there is no user's manual -- because it's quicker to change code than to document
-#       it (and DSL documentation gets out of date very easily).
-# ==========
-#   4) View Transaction History by DOC Number (option 8, then 2)
-#      This query would be EVEN MORE useful, if it also summarized the issued_assets
-#      and issued_accessories for the selected DOC / Incarcerated ... Thanks in advance!
-
 # wrap all these imports in try/except, so we can report the error, pause, and exit
 try:
 
@@ -87,7 +28,7 @@ except ImportError as e:
     print(
             f"\n\nFatal error: Unable to process an 'import' statement." +
             f"\n\nFatal error: This is caused by the Python packages not being properly installed." +
-            f"\n\nTriage: Refer to 'AAA___readme___OSN.txt' in the 'Asset_Management_App' directory to fix this problem." +
+            f"\n\nTriage: Refer to 'README.md' in the 'Asset_Management_App' directory to fix this problem." +
             f"\n\nException text: {e}\n"
     )
     input( f"Press <ENTER> to exit this application... " )
