@@ -164,6 +164,7 @@ cython_debug/
 archive/
 documentation/
 installers/
+packages/
 
 # File types
 *.xlsx
